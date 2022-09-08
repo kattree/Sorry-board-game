@@ -1,6 +1,6 @@
 //I'm really bad at coding but I really want to get better because I want to go into a programming career. 
 // working on using functions but I still use the main because I've still got my training wheels on
-//last updated: 23/8 1:11pm
+//last updated: 8/9 1:10pm
 
 
 #include <iostream>
@@ -11,6 +11,10 @@
 #include <time.h>
 #define block "\u25a9"
 using namespace std;
+
+struct Board{
+  char* realBoard[61];
+};
 
 int getPlayer(){
 int players;
@@ -64,7 +68,7 @@ switch (roll){
   case 7: break;
 
    case 8:{
-        e++;
+    
         printf("Lost a turn!");
         break;
       }
@@ -82,7 +86,7 @@ switch (roll){
       }
   case 11: break;
     
-      case: 12 {
+      case 12: {
         
         printf("Sent back to the beginning!");
         player=0;
@@ -92,9 +96,6 @@ switch (roll){
   
 }
   
-  
-  
-
   
 }
 int welcome(){
@@ -113,6 +114,20 @@ int welcome(){
   return players;
 }
 
+void printboardIntial(Board board){
+  for (int i = 0; i<61; i++) {
+    board.realBoard[i] = block;
+    cout<<board.realBoard[i];
+    }
+}
+
+bool doublesChecker(int roll1, int roll2){
+  if (roll1 == roll2) return true;
+  return false;
+}
+
+
+
 
 
 
@@ -120,13 +135,22 @@ int welcome(){
 
 int main() {
   //std::cout << "Hello World!\n";
-  welcome();
-  int players;
+  Board board;
+ // int* board[61];
+  //char* realBoard[61];
+  int players = welcome();
+  printboardIntial(board);
+  int onPLayer;
+    int roll = diceRoll();
+    bool* canRoll[players];
+
+
 }
 
 
 /*
 Update log:
-Made the welcome message have a validation system for the amount of players
-Also started working on player movement(copied from the last project with changes)
+Created a print board function that assigned block Unicode characters to each part in the array
+Created a strcut because I literally have no idea how to pass an array into a function
+Tried to start a doubles checker function to allow the player to start the game
 */
