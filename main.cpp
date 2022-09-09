@@ -1,6 +1,6 @@
 //I'm really bad at coding but I really want to get better because I want to go into a programming career. 
 // working on using functions but I still use the main because I've still got my training wheels on
-//last updated: 9/9 8:57am
+//last updated: 9/9 12:49pm
 
 
 #include <iostream>
@@ -21,6 +21,7 @@ int players;
 std::cin >> players;
   return players;
   }
+
 int diceRoll(){
     int die = (rand() % 6)+1;
 return die;
@@ -83,32 +84,32 @@ switch (roll){
   case 11: break;
     
       case 12: {
-        
         printf("Sent back to the beginning!");
         player=0;
         break;
       }
-  
-  
-  
 }
     }
-  
-  
 }
+
 int welcome(){
   printf("Welcome to sorry! How many players are playing? 4 is the max");
   int players = getPlayer();
   //int dplay[getPlayer()];
   while (players > 4 || players < 1) {
     printf("hey stupid. I said only FOUR players! Now please reenter!");
-    players = getPlayer();}
+    players = getPlayer();
   printf("Confirm the amount of players is %d(y/n)",players);
   char yn; cin>>yn;
   if(yn == 'n'){
     printf("Please reenter the amount of players you want");
     players = getPlayer();}
-
+    }
+    printf("Confirm the amount of players is %d(y/n)",players);
+  char yn; cin>>yn;
+  if(yn == 'n'){
+    printf("Please reenter the amount of players you want");
+    players = getPlayer();}
   return players;
 }
 
@@ -124,9 +125,21 @@ bool doublesChecker(int roll1, int roll2){
   return false;
 }
 
+int posEqual(int p1, int p2, int p3, int p4){
+  if (p1==p2||p1==p3||p1==p4||p2==p3||p2==p4||p3==p4) return true;
+  else return false;
+}
 
+void switchPlayer(int player, bool posEqual){
+  if (posEqual) player = 0;
+}
 
-
+void inLast(){
+  
+}
+void inFirst(){
+  
+}
 
 
 
@@ -139,8 +152,10 @@ int main() {
   int players = welcome();
   printboardIntial(board);
   int onPLayer;
-    bool* canRoll[players];
-   for (int i = 0; i<players; i++) canRoll[i] = false;
+    bool canRoll[players];
+   for (int i = 0; i<players; i++) {
+     canRoll[i] = false;
+     }
   int roll1 = diceRoll();
   int roll2 = diceRoll();
 
@@ -150,6 +165,6 @@ int main() {
 
 /*
 Update log:
-Fixed up the roll dice function to allow the double checker to work
-Started working with the move function some more
+made a function where the player would get pushed back to the beginning if s/he had the same position as another
+and added the two fuctions inLast() and inFirst() and did nothing with them because my nose burns and my htraot hurts so I cqn't think as well
 */
