@@ -1,6 +1,6 @@
 //I'm really bad at coding but I really want to get better because I want to go into a programming career. 
 // working on using functions but I still use the main because I've still got my training wheels on
-//last updated: 8/9 1:10pm
+//last updated: 9/9 8:57am
 
 
 #include <iostream>
@@ -22,16 +22,12 @@ std::cin >> players;
   return players;
   }
 int diceRoll(){
-    int die1 = (rand() % 6)+1;
-    int die = (rand()%11)/2+1;
-  int total = die1+die;
-  int rollAmount[11];
-  rollAmount[total]+=1;
-
-return total;
+    int die = (rand() % 6)+1;
+return die;
 }
 
-void playerMovement(int player,int roll){
+void playerMovement(int player,int roll, bool go){
+  if (go){
 switch (roll){
   case 2: {
   printf("Moved forward two.");
@@ -94,7 +90,9 @@ switch (roll){
       }
   
   
+  
 }
+    }
   
   
 }
@@ -141,8 +139,10 @@ int main() {
   int players = welcome();
   printboardIntial(board);
   int onPLayer;
-    int roll = diceRoll();
     bool* canRoll[players];
+   for (int i = 0; i<players; i++) canRoll[i] = false;
+  int roll1 = diceRoll();
+  int roll2 = diceRoll();
 
 
 }
@@ -150,7 +150,6 @@ int main() {
 
 /*
 Update log:
-Created a print board function that assigned block Unicode characters to each part in the array
-Created a strcut because I literally have no idea how to pass an array into a function
-Tried to start a doubles checker function to allow the player to start the game
+Fixed up the roll dice function to allow the double checker to work
+Started working with the move function some more
 */
